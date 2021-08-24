@@ -6,6 +6,7 @@ from .models import CardlessCredit
 from .models import CreditCard
 from .models import DirectDebit
 from .models import Disbursement
+from .models import PHDisbursement
 from .models import EWallet
 from .models import Invoice
 from .models import Payout
@@ -39,6 +40,9 @@ class _XenditParamInjector:
 
     def instantiate_disbursement(self) -> Disbursement:
         return self.instantiate(Disbursement)
+
+    def instantiate_disbursement(self) -> PHDisbursement:
+        return self.instantiate(PHDisbursement)
 
     def instantiate_ewallet(self) -> EWallet:
         return self.instantiate(EWallet)
