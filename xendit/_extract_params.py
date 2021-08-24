@@ -1,7 +1,7 @@
 import inspect
 
 
-def _extract_params(function_locals, func_object, headers_params=[], ignore_params=[]):
+def _extract_params(function_locals, func_object, headers_params=[], ignore_params=[], api_source=""):
     """Extract data from function_locals to headers and body of the request
 
     Args:
@@ -22,6 +22,10 @@ def _extract_params(function_locals, func_object, headers_params=[], ignore_para
         "idempotency_key": "Idempotency-key",
         "with_fee_rule": "with-fee-rule",
     }
+
+    if api_source == "PH":
+        map_headers_key["x_idempotency_key"] = "XENDIT-IDEMPOTENCY-KEY"
+
     for param in inspect.getfullargspec(func_object)[4]:
         value = function_locals.get(param, None)
         if value is not None and param not in ignore_params:
