@@ -4,6 +4,7 @@ from .cardlesscredit import *
 from .creditcard import *
 from .directdebit import *
 from .disbursement import *
+from .ph_disbursement import *
 from .ewallet import *
 from .invoice import *
 from .payout import *
